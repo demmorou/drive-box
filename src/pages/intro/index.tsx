@@ -32,7 +32,7 @@ const Intro: FC<Props> = ({ navigation }) => {
       <Image style={imageStyle.image} source={cloud} />
 
       <Welcome>Welcome to</Welcome>
-      <Title>Dirbbox</Title>
+      <Title>Drive-box</Title>
       <InfoText>
         Best cloud storage platform for all business and individuals to manage
         there data.

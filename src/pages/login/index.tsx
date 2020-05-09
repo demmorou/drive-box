@@ -10,17 +10,21 @@ import {
   ForgetPasswordButton,
   ForgetPasswordText,
 } from './styles';
+import { useAuth } from '../../contexts/auth';
 
 import Arrow from '../../components/arrow';
 
 type Props = NavigationSwitchScreenProps & {};
 
 const Login: FC<Props> = ({ navigation }) => {
+  const { signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-    console.log(email, password);
+    if (email.length >= 6 && password.length >= 6) {
+      signIn(email);
+    }
   };
 
   const goBack = () => {
