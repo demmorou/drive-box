@@ -12,6 +12,10 @@ import {
   Folder,
   icon,
   FlatListStyle,
+  HeaderFolder,
+  MoreButton,
+  TitleFolder,
+  Data,
 } from './styles';
 
 import { DataFolders } from './data';
@@ -22,7 +26,18 @@ const Home: FC = () => {
   const renderItems = ({ item }: any) => {
     return (
       <Folder style={{ backgroundColor: item.background, borderRadius: 20 }}>
-        <Image source={item.image} />
+        <HeaderFolder>
+          <Image source={item.image} />
+
+          <MoreButton>
+            <Icon name="more-vert" size={24} color={item.colorIcon} />
+          </MoreButton>
+        </HeaderFolder>
+
+        <TitleFolder style={{ color: item.textColor }}>
+          {item.title}
+        </TitleFolder>
+        <Data style={{ color: item.textColor }}>{item.date}</Data>
       </Folder>
     );
   };
@@ -30,7 +45,7 @@ const Home: FC = () => {
   return (
     <Container>
       <Header>
-        <Title>Your Dirbbox</Title>
+        <Title>Your Drive-box</Title>
 
         <Image source={menu} />
       </Header>
@@ -46,6 +61,7 @@ const Home: FC = () => {
       <FlatList
         style={FlatListStyle.root}
         data={DataFolders}
+        showsVerticalScrollIndicator={false}
         renderItem={renderItems}
         keyExtractor={(item) => item.title}
         numColumns={2}
